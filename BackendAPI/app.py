@@ -1,7 +1,7 @@
 from importlib.metadata import metadata
 from flask import Flask, session, Response
 from flask_restful import reqparse
-import requests
+import requests, ast
 from flask_sqlalchemy import SQLAlchemy
 import backendFunctions as bf
 from http import HTTPStatus
@@ -23,7 +23,7 @@ parser.add_argument("lng")
 @app.route("/", methods=["DELETE"])
 def resetRestrictions():
     session.clear()
-    return "ok", 201
+    return Response("ok", HTTPStatus.CREATED, mimetype="text/plain")
 
 # receive additional dietary restrictions
 @app.route("/diet/restrictions", methods=["PUT"])
@@ -38,12 +38,14 @@ def updateRestrictions():
 
     session["restrictions"] = restrictions
 
-    return {"ok": newRestrictions}, 201
+    resp = '{"restrictions": {}'.format(newRestrictions)
+    return Response(resp, status=HTTPStatus.CREATED, mimetype="application/json")
 
 # return dietary restrictions
 @app.route("/diet/restrictions", methods=["GET"])
 def showRestrictions():
-    return {"restrictions": session.get("restrictions", [])}
+    resp = session.get("restrictions", [])
+    return Response(resp, status=HTTPStatus.OK, mimetype="application/json")
 
 # receive additional diet categories
 @app.route("/diet", methods=["PUT"])
@@ -58,12 +60,15 @@ def updateDiets():
 
     session["diets"] = diets
 
-    return {"ok": diets}, 201
+    resp = '{"diets": {}}'.format(diets)
+    return Response(resp, status=HTTPStatus.CREATED, mimetype="application/json")
 
 # return diets
 @app.route("/diet", methods=["GET"])
 def showDiets():
-    return {"diets": session.get("diets", [])}
+    diets = session.get("diets", [])
+    resp = '{"diets": {}}'.format(diets)
+    return Response(resp, status=HTTPStatus.OK, mimetype="application/json")
 
 # receive picture metadata and pass to Aadi
 @app.route("/meta", methods=["PUT"])
@@ -79,7 +84,7 @@ def passOnMetadata():
 
     for cuisine in tags:
         count = cuisineDict.get(cuisine, 0)
-        cuisineDict[cuisine] = count+1 
+        cuisineDict[str(cuisine)] = count+1
 
     session["cuisine_dict"] = cuisineDict
 
@@ -90,8 +95,8 @@ def passOnMetadata():
 def playRoulette():
     cuisineDict = session.get("cuisine_dict", {})
     result = bf.cuisineRoulette(cuisineDict, 2)
-    
-    return {"cuisines": result}
+    resp = ast.literal_eval(result.decode('utf-8'))
+    return Response(resp, status=HTTPStatus.OK, mimetype="application/json")
 
 
 # get a JSON array of recipe summaries to suggest

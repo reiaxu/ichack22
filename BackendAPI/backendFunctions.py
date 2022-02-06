@@ -2,7 +2,7 @@
 from random import randrange
 
 
-def cuisineRoulette(cuisineDict, n):
+def cuisineRoulette(cuisineDict, n) -> list:
     if len(cuisineDict) < n :
         return cuisineDict.keys()
     else:
