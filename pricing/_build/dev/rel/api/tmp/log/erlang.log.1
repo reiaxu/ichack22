@@ -1,0 +1,210 @@
+
+=====
+===== LOGGING STARTED Sun Feb  6 08:24:30 UTC 2022
+=====
+[22m[info] Function passed as a handler with ID {Phoenix.Logger, [:phoenix, :channel_handled_in]} is local function.
+This mean that it is either anonymous function or capture of function without module specified. That may cause performance penalty when calling such handler. For more details see note in `telemetry:attach/4` documentation.
+
+https://hexdocs.pm/telemetry/telemetry.html#attach-4
+[0m[22m[info] Function passed as a handler with ID {Phoenix.Logger, [:phoenix, :channel_joined]} is local function.
+This mean that it is either anonymous function or capture of function without module specified. That may cause performance penalty when calling such handler. For more details see note in `telemetry:attach/4` documentation.
+
+https://hexdocs.pm/telemetry/telemetry.html#attach-4
+[0m[22m[info] Function passed as a handler with ID {Phoenix.Logger, [:phoenix, :endpoint, :start]} is local function.
+This mean that it is either anonymous function or capture of function without module specified. That may cause performance penalty when calling such handler. For more details see note in `telemetry:attach/4` documentation.
+
+https://hexdocs.pm/telemetry/telemetry.html#attach-4
+[0m[22m[info] Function passed as a handler with ID {Phoenix.Logger, [:phoenix, :endpoint, :stop]} is local function.
+This mean that it is either anonymous function or capture of function without module specified. That may cause performance penalty when calling such handler. For more details see note in `telemetry:attach/4` documentation.
+
+https://hexdocs.pm/telemetry/telemetry.html#attach-4
+[0m[22m[info] Function passed as a handler with ID {Phoenix.Logger, [:phoenix, :error_rendered]} is local function.
+This mean that it is either anonymous function or capture of function without module specified. That may cause performance penalty when calling such handler. For more details see note in `telemetry:attach/4` documentation.
+
+https://hexdocs.pm/telemetry/telemetry.html#attach-4
+[0m[22m[info] Function passed as a handler with ID {Phoenix.Logger, [:phoenix, :router_dispatch, :start]} is local function.
+This mean that it is either anonymous function or capture of function without module specified. That may cause performance penalty when calling such handler. For more details see note in `telemetry:attach/4` documentation.
+
+https://hexdocs.pm/telemetry/telemetry.html#attach-4
+[0m[22m[info] Function passed as a handler with ID {Phoenix.Logger, [:phoenix, :socket_connected]} is local function.
+This mean that it is either anonymous function or capture of function without module specified. That may cause performance penalty when calling such handler. For more details see note in `telemetry:attach/4` documentation.
+
+https://hexdocs.pm/telemetry/telemetry.html#attach-4
+[0m[22m[info] Running ApiWeb.Endpoint with cowboy 2.9.0 at 0.0.0.0:4000 (http)
+[0m[22m[info] Access ApiWeb.Endpoint at http://localhost:4000
+[0m
+webpack is watching the files…
+
+[hardsource:bcc5718f] Using 2 MB of disk space.
+[hardsource:bcc5718f] Tracking node dependencies with: package-lock.json.
+[hardsource:bcc5718f] Reading from cache bcc5718f...
+Hash: 97aa35db74155347ae47
+Version: webpack 4.46.0
+Time: 134ms
+Built at: 06/02/2022 08:24:32
+ Asset      Size  Chunks             Chunk Names
+app.js  16.6 KiB     app  [emitted]  app
+Entrypoint app = app.js
+[0] multi ./js/app.js 28 bytes {app} [built]
+    + 1 hidden module
+[31m[error] GenServer Phoenix.CodeReloader.Server terminating
+** (UndefinedFunctionError) function Mix.Project.umbrella?/0 is undefined (module Mix.Project is not available)
+    Mix.Project.umbrella?()
+    (phoenix 1.5.13) lib/phoenix/code_reloader/server.ex:110: Phoenix.CodeReloader.Server.default_reloadable_apps/0
+    (phoenix 1.5.13) lib/phoenix/code_reloader/server.ex:68: Phoenix.CodeReloader.Server.handle_call/3
+    (stdlib 3.15.1) gen_server.erl:721: :gen_server.try_handle_call/4
+    (stdlib 3.15.1) gen_server.erl:750: :gen_server.handle_msg/6
+    (stdlib 3.15.1) proc_lib.erl:226: :proc_lib.init_p_do_apply/3
+Last message (from #PID<0.1246.0>): {:reload!, ApiWeb.Endpoint}
+State: true
+Client #PID<0.1246.0> is alive
+
+    (stdlib 3.15.1) gen.erl:214: :gen.do_call/4
+    (elixir 1.14.0-dev) lib/gen_server.ex:1027: GenServer.call/3
+    (phoenix 1.5.13) lib/phoenix/code_reloader.ex:69: Phoenix.CodeReloader.call/2
+    (api 0.1.0) lib/api_web/endpoint.ex:1: ApiWeb.Endpoint.plug_builder_call/2
+    (api 0.1.0) lib/plug/debugger.ex:136: ApiWeb.Endpoint."call (overridable 3)"/2
+    (api 0.1.0) lib/api_web/endpoint.ex:1: ApiWeb.Endpoint.call/2
+    (phoenix 1.5.13) lib/phoenix/endpoint/cowboy2_handler.ex:65: Phoenix.Endpoint.Cowboy2Handler.init/4
+    (cowboy 2.9.0) /home/tm/Projects/ichack22/pricing/api/deps/cowboy/src/cowboy_handler.erl:37: :cowboy_handler.execute/2
+    (cowboy 2.9.0) /home/tm/Projects/ichack22/pricing/api/deps/cowboy/src/cowboy_stream_h.erl:306: :cowboy_stream_h.execute/3
+    (cowboy 2.9.0) /home/tm/Projects/ichack22/pricing/api/deps/cowboy/src/cowboy_stream_h.erl:295: :cowboy_stream_h.request_process/3
+    (stdlib 3.15.1) proc_lib.erl:226: :proc_lib.init_p_do_apply/3
+[0m[31m[error] #PID<0.1246.0> running ApiWeb.Endpoint (connection #PID<0.1245.0>, stream id 1) terminated
+Server: localhost:4000 (http)
+Request: GET /api/items?name[]=apples&name[]=adghslkhek
+** (exit) exited in: GenServer.call(Phoenix.CodeReloader.Server, {:reload!, ApiWeb.Endpoint}, :infinity)
+    ** (EXIT) an exception was raised:
+        ** (UndefinedFunctionError) function Mix.Project.umbrella?/0 is undefined (module Mix.Project is not available)
+            Mix.Project.umbrella?()
+            (phoenix 1.5.13) lib/phoenix/code_reloader/server.ex:110: Phoenix.CodeReloader.Server.default_reloadable_apps/0
+            (phoenix 1.5.13) lib/phoenix/code_reloader/server.ex:68: Phoenix.CodeReloader.Server.handle_call/3
+            (stdlib 3.15.1) gen_server.erl:721: :gen_server.try_handle_call/4
+            (stdlib 3.15.1) gen_server.erl:750: :gen_server.handle_msg/6
+            (stdlib 3.15.1) proc_lib.erl:226: :proc_lib.init_p_do_apply/3
+[0m[31m[error] GenServer Phoenix.CodeReloader.Server terminating
+** (UndefinedFunctionError) function Mix.Project.umbrella?/0 is undefined (module Mix.Project is not available)
+    Mix.Project.umbrella?()
+    (phoenix 1.5.13) lib/phoenix/code_reloader/server.ex:110: Phoenix.CodeReloader.Server.default_reloadable_apps/0
+    (phoenix 1.5.13) lib/phoenix/code_reloader/server.ex:68: Phoenix.CodeReloader.Server.handle_call/3
+    (stdlib 3.15.1) gen_server.erl:721: :gen_server.try_handle_call/4
+    (stdlib 3.15.1) gen_server.erl:750: :gen_server.handle_msg/6
+    (stdlib 3.15.1) proc_lib.erl:226: :proc_lib.init_p_do_apply/3
+Last message (from #PID<0.1250.0>): {:reload!, ApiWeb.Endpoint}
+State: false
+Client #PID<0.1250.0> is alive
+
+    (stdlib 3.15.1) gen.erl:214: :gen.do_call/4
+    (elixir 1.14.0-dev) lib/gen_server.ex:1027: GenServer.call/3
+    (phoenix 1.5.13) lib/phoenix/code_reloader.ex:69: Phoenix.CodeReloader.call/2
+    (api 0.1.0) lib/api_web/endpoint.ex:1: ApiWeb.Endpoint.plug_builder_call/2
+    (api 0.1.0) lib/plug/debugger.ex:136: ApiWeb.Endpoint."call (overridable 3)"/2
+    (api 0.1.0) lib/api_web/endpoint.ex:1: ApiWeb.Endpoint.call/2
+    (phoenix 1.5.13) lib/phoenix/endpoint/cowboy2_handler.ex:65: Phoenix.Endpoint.Cowboy2Handler.init/4
+    (cowboy 2.9.0) /home/tm/Projects/ichack22/pricing/api/deps/cowboy/src/cowboy_handler.erl:37: :cowboy_handler.execute/2
+    (cowboy 2.9.0) /home/tm/Projects/ichack22/pricing/api/deps/cowboy/src/cowboy_stream_h.erl:306: :cowboy_stream_h.execute/3
+    (cowboy 2.9.0) /home/tm/Projects/ichack22/pricing/api/deps/cowboy/src/cowboy_stream_h.erl:295: :cowboy_stream_h.request_process/3
+    (stdlib 3.15.1) proc_lib.erl:226: :proc_lib.init_p_do_apply/3
+[0m[31m[error] #PID<0.1250.0> running ApiWeb.Endpoint (connection #PID<0.1249.0>, stream id 1) terminated
+Server: localhost:4000 (http)
+Request: GET /api/items?name[]=apples&name[]=adghslkhek
+** (exit) exited in: GenServer.call(Phoenix.CodeReloader.Server, {:reload!, ApiWeb.Endpoint}, :infinity)
+    ** (EXIT) an exception was raised:
+        ** (UndefinedFunctionError) function Mix.Project.umbrella?/0 is undefined (module Mix.Project is not available)
+            Mix.Project.umbrella?()
+            (phoenix 1.5.13) lib/phoenix/code_reloader/server.ex:110: Phoenix.CodeReloader.Server.default_reloadable_apps/0
+            (phoenix 1.5.13) lib/phoenix/code_reloader/server.ex:68: Phoenix.CodeReloader.Server.handle_call/3
+            (stdlib 3.15.1) gen_server.erl:721: :gen_server.try_handle_call/4
+            (stdlib 3.15.1) gen_server.erl:750: :gen_server.handle_msg/6
+            (stdlib 3.15.1) proc_lib.erl:226: :proc_lib.init_p_do_apply/3
+[0m
+=====
+===== LOGGING STARTED Sun Feb  6 08:28:46 UTC 2022
+=====
+Protocol 'inet_tcp': the name api@tmoores seems to be in use by another Erlang node
+
+===== ALIVE Sun Feb  6 08:39:38 UTC 2022
+
+===== ALIVE Sun Feb  6 08:54:38 UTC 2022
+
+===== ALIVE Sun Feb  6 09:09:38 UTC 2022
+
+===== ALIVE Sun Feb  6 09:24:38 UTC 2022
+
+=====
+===== LOGGING STARTED Sun Feb  6 09:38:51 UTC 2022
+=====
+Protocol 'inet_tcp': the name api@tmoores seems to be in use by another Erlang node
+
+===== Sun Feb  6 09:39:01 UTC 2022
+[31m[error] GenServer Phoenix.CodeReloader.Server terminating
+** (UndefinedFunctionError) function Mix.Project.umbrella?/0 is undefined (module Mix.Project is not available)
+    Mix.Project.umbrella?()
+    (phoenix 1.5.13) lib/phoenix/code_reloader/server.ex:110: Phoenix.CodeReloader.Server.default_reloadable_apps/0
+    (phoenix 1.5.13) lib/phoenix/code_reloader/server.ex:68: Phoenix.CodeReloader.Server.handle_call/3
+    (stdlib 3.15.1) gen_server.erl:721: :gen_server.try_handle_call/4
+    (stdlib 3.15.1) gen_server.erl:750: :gen_server.handle_msg/6
+    (stdlib 3.15.1) proc_lib.erl:226: :proc_lib.init_p_do_apply/3
+Last message (from #PID<0.1290.0>): {:reload!, ApiWeb.Endpoint}
+State: false
+Client #PID<0.1290.0> is alive
+
+    (stdlib 3.15.1) gen.erl:214: :gen.do_call/4
+    (elixir 1.14.0-dev) lib/gen_server.ex:1027: GenServer.call/3
+    (phoenix 1.5.13) lib/phoenix/code_reloader.ex:69: Phoenix.CodeReloader.call/2
+    (api 0.1.0) lib/api_web/endpoint.ex:1: ApiWeb.Endpoint.plug_builder_call/2
+    (api 0.1.0) lib/plug/debugger.ex:136: ApiWeb.Endpoint."call (overridable 3)"/2
+    (api 0.1.0) lib/api_web/endpoint.ex:1: ApiWeb.Endpoint.call/2
+    (phoenix 1.5.13) lib/phoenix/endpoint/cowboy2_handler.ex:65: Phoenix.Endpoint.Cowboy2Handler.init/4
+    (cowboy 2.9.0) /home/tm/Projects/ichack22/pricing/api/deps/cowboy/src/cowboy_handler.erl:37: :cowboy_handler.execute/2
+    (cowboy 2.9.0) /home/tm/Projects/ichack22/pricing/api/deps/cowboy/src/cowboy_stream_h.erl:306: :cowboy_stream_h.execute/3
+    (cowboy 2.9.0) /home/tm/Projects/ichack22/pricing/api/deps/cowboy/src/cowboy_stream_h.erl:295: :cowboy_stream_h.request_process/3
+    (stdlib 3.15.1) proc_lib.erl:226: :proc_lib.init_p_do_apply/3
+[0m[31m[error] #PID<0.1290.0> running ApiWeb.Endpoint (connection #PID<0.1289.0>, stream id 1) terminated
+Server: localhost:4000 (http)
+Request: GET /api/items?name[]=apples&name[]=adghslkhek
+** (exit) exited in: GenServer.call(Phoenix.CodeReloader.Server, {:reload!, ApiWeb.Endpoint}, :infinity)
+    ** (EXIT) an exception was raised:
+        ** (UndefinedFunctionError) function Mix.Project.umbrella?/0 is undefined (module Mix.Project is not available)
+            Mix.Project.umbrella?()
+            (phoenix 1.5.13) lib/phoenix/code_reloader/server.ex:110: Phoenix.CodeReloader.Server.default_reloadable_apps/0
+            (phoenix 1.5.13) lib/phoenix/code_reloader/server.ex:68: Phoenix.CodeReloader.Server.handle_call/3
+            (stdlib 3.15.1) gen_server.erl:721: :gen_server.try_handle_call/4
+            (stdlib 3.15.1) gen_server.erl:750: :gen_server.handle_msg/6
+            (stdlib 3.15.1) proc_lib.erl:226: :proc_lib.init_p_do_apply/3
+[0m[31m[error] GenServer Phoenix.CodeReloader.Server terminating
+** (UndefinedFunctionError) function Mix.Project.umbrella?/0 is undefined (module Mix.Project is not available)
+    Mix.Project.umbrella?()
+    (phoenix 1.5.13) lib/phoenix/code_reloader/server.ex:110: Phoenix.CodeReloader.Server.default_reloadable_apps/0
+    (phoenix 1.5.13) lib/phoenix/code_reloader/server.ex:68: Phoenix.CodeReloader.Server.handle_call/3
+    (stdlib 3.15.1) gen_server.erl:721: :gen_server.try_handle_call/4
+    (stdlib 3.15.1) gen_server.erl:750: :gen_server.handle_msg/6
+    (stdlib 3.15.1) proc_lib.erl:226: :proc_lib.init_p_do_apply/3
+Last message (from #PID<0.1292.0>): {:reload!, ApiWeb.Endpoint}
+State: false
+Client #PID<0.1292.0> is alive
+
+    (stdlib 3.15.1) gen.erl:214: :gen.do_call/4
+    (elixir 1.14.0-dev) lib/gen_server.ex:1027: GenServer.call/3
+    (phoenix 1.5.13) lib/phoenix/code_reloader.ex:69: Phoenix.CodeReloader.call/2
+    (api 0.1.0) lib/api_web/endpoint.ex:1: ApiWeb.Endpoint.plug_builder_call/2
+    (api 0.1.0) lib/plug/debugger.ex:136: ApiWeb.Endpoint."call (overridable 3)"/2
+    (api 0.1.0) lib/api_web/endpoint.ex:1: ApiWeb.Endpoint.call/2
+    (phoenix 1.5.13) lib/phoenix/endpoint/cowboy2_handler.ex:65: Phoenix.Endpoint.Cowboy2Handler.init/4
+    (cowboy 2.9.0) /home/tm/Projects/ichack22/pricing/api/deps/cowboy/src/cowboy_handler.erl:37: :cowboy_handler.execute/2
+    (cowboy 2.9.0) /home/tm/Projects/ichack22/pricing/api/deps/cowboy/src/cowboy_stream_h.erl:306: :cowboy_stream_h.execute/3
+    (cowboy 2.9.0) /home/tm/Projects/ichack22/pricing/api/deps/cowboy/src/cowboy_stream_h.erl:295: :cowboy_stream_h.request_process/3
+    (stdlib 3.15.1) proc_lib.erl:226: :proc_lib.init_p_do_apply/3
+[0m[31m[error] #PID<0.1292.0> running ApiWeb.Endpoint (connection #PID<0.1289.0>, stream id 2) terminated
+Server: localhost:4000 (http)
+Request: GET /favicon.ico
+** (exit) exited in: GenServer.call(Phoenix.CodeReloader.Server, {:reload!, ApiWeb.Endpoint}, :infinity)
+    ** (EXIT) an exception was raised:
+        ** (UndefinedFunctionError) function Mix.Project.umbrella?/0 is undefined (module Mix.Project is not available)
+            Mix.Project.umbrella?()
+            (phoenix 1.5.13) lib/phoenix/code_reloader/server.ex:110: Phoenix.CodeReloader.Server.default_reloadable_apps/0
+            (phoenix 1.5.13) lib/phoenix/code_reloader/server.ex:68: Phoenix.CodeReloader.Server.handle_call/3
+            (stdlib 3.15.1) gen_server.erl:721: :gen_server.try_handle_call/4
+            (stdlib 3.15.1) gen_server.erl:750: :gen_server.handle_msg/6
+            (stdlib 3.15.1) proc_lib.erl:226: :proc_lib.init_p_do_apply/3
+[0m

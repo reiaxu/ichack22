@@ -1,0 +1,99 @@
+
+=====
+===== LOGGING STARTED Sun Feb  6 10:37:28 UTC 2022
+=====
+[22m10:37:29.864 [info] Function passed as a handler with ID {Phoenix.Logger, [:phoenix, :channel_handled_in]} is local function.
+This mean that it is either anonymous function or capture of function without module specified. That may cause performance penalty when calling such handler. For more details see note in `telemetry:attach/4` documentation.
+
+https://hexdocs.pm/telemetry/telemetry.html#attach-4
+[0m[22m10:37:29.864 [info] Function passed as a handler with ID {Phoenix.Logger, [:phoenix, :channel_joined]} is local function.
+This mean that it is either anonymous function or capture of function without module specified. That may cause performance penalty when calling such handler. For more details see note in `telemetry:attach/4` documentation.
+
+https://hexdocs.pm/telemetry/telemetry.html#attach-4
+[0m[22m10:37:29.865 [info] Function passed as a handler with ID {Phoenix.Logger, [:phoenix, :endpoint, :start]} is local function.
+This mean that it is either anonymous function or capture of function without module specified. That may cause performance penalty when calling such handler. For more details see note in `telemetry:attach/4` documentation.
+
+https://hexdocs.pm/telemetry/telemetry.html#attach-4
+[0m[22m10:37:29.865 [info] Function passed as a handler with ID {Phoenix.Logger, [:phoenix, :endpoint, :stop]} is local function.
+This mean that it is either anonymous function or capture of function without module specified. That may cause performance penalty when calling such handler. For more details see note in `telemetry:attach/4` documentation.
+
+https://hexdocs.pm/telemetry/telemetry.html#attach-4
+[0m[22m10:37:29.866 [info] Function passed as a handler with ID {Phoenix.Logger, [:phoenix, :error_rendered]} is local function.
+This mean that it is either anonymous function or capture of function without module specified. That may cause performance penalty when calling such handler. For more details see note in `telemetry:attach/4` documentation.
+
+https://hexdocs.pm/telemetry/telemetry.html#attach-4
+[0m[22m10:37:29.866 [info] Function passed as a handler with ID {Phoenix.Logger, [:phoenix, :router_dispatch, :start]} is local function.
+This mean that it is either anonymous function or capture of function without module specified. That may cause performance penalty when calling such handler. For more details see note in `telemetry:attach/4` documentation.
+
+https://hexdocs.pm/telemetry/telemetry.html#attach-4
+[0m[22m10:37:29.866 [info] Function passed as a handler with ID {Phoenix.Logger, [:phoenix, :socket_connected]} is local function.
+This mean that it is either anonymous function or capture of function without module specified. That may cause performance penalty when calling such handler. For more details see note in `telemetry:attach/4` documentation.
+
+https://hexdocs.pm/telemetry/telemetry.html#attach-4
+[0m[22m10:37:29.875 [info] Running ApiWeb.Endpoint with cowboy 2.9.0 at :::4000 (http)
+[0m[22m10:37:29.875 [info] Access ApiWeb.Endpoint at http://example.com
+[0m[22m10:37:34.292 request_id=FtEsH9q-LtrK9-UAAAAD [info] GET /api/items
+[0m[22m10:37:34.293 request_id=FtEsH9q-LtrK9-UAAAAD [info] Sent 500 in 656µs
+[0m[31m10:37:34.293 [error] #PID<0.1245.0> running ApiWeb.Endpoint (connection #PID<0.1244.0>, stream id 1) terminated
+Server: localhost:4000 (http)
+Request: GET /api/items?name[]=apples&name[]=adghslkhek
+** (exit) an exception was raised:
+    ** (UndefinedFunctionError) function :httpc.request/1 is undefined (module :httpc is not available)
+        :httpc.request('https://api.rainforestapi.com/request?api_key=AFBDCD874C274C278C921A03297DF445&type=search&amazon_domain=amazon.co.uk&search_term=apples&category_id=amazonfresh')
+        (api 0.1.0) lib/api.ex:6: Api.foods_like/1
+        (api 0.1.0) lib/api.ex:18: Api.single_item/1
+        (elixir 1.14.0-dev) lib/enum.ex:1634: Enum."-map/2-lists^map/1-0-"/2
+        (api 0.1.0) lib/api_web/controllers/api_controller.ex:8: ApiWeb.ApiController.search/2
+        (api 0.1.0) lib/api_web/controllers/api_controller.ex:1: ApiWeb.ApiController.action/2
+        (api 0.1.0) lib/api_web/controllers/api_controller.ex:1: ApiWeb.ApiController.phoenix_controller_pipeline/2
+        (phoenix 1.5.13) lib/phoenix/router.ex:352: Phoenix.Router.__call__/2
+[0m[22m10:37:44.515 request_id=FtEsIjwSfvQ-6nMAAABD [info] GET /api/items
+[0m[22m10:37:44.515 request_id=FtEsIjwSfvQ-6nMAAABD [info] Sent 500 in 402µs
+[0m[31m10:37:44.515 [error] #PID<0.1263.0> running ApiWeb.Endpoint (connection #PID<0.1244.0>, stream id 2) terminated
+Server: localhost:4000 (http)
+Request: GET /api/items?name[]=apples&name[]=adghslkhek
+** (exit) an exception was raised:
+    ** (UndefinedFunctionError) function :httpc.request/1 is undefined (module :httpc is not available)
+        :httpc.request('https://api.rainforestapi.com/request?api_key=AFBDCD874C274C278C921A03297DF445&type=search&amazon_domain=amazon.co.uk&search_term=apples&category_id=amazonfresh')
+        (api 0.1.0) lib/api.ex:6: Api.foods_like/1
+        (api 0.1.0) lib/api.ex:18: Api.single_item/1
+        (elixir 1.14.0-dev) lib/enum.ex:1634: Enum."-map/2-lists^map/1-0-"/2
+        (api 0.1.0) lib/api_web/controllers/api_controller.ex:8: ApiWeb.ApiController.search/2
+        (api 0.1.0) lib/api_web/controllers/api_controller.ex:1: ApiWeb.ApiController.action/2
+        (api 0.1.0) lib/api_web/controllers/api_controller.ex:1: ApiWeb.ApiController.phoenix_controller_pipeline/2
+        (phoenix 1.5.13) lib/phoenix/router.ex:352: Phoenix.Router.__call__/2
+[0m[22m10:37:47.664 request_id=FtEsIvfHrTKA8ewAAAAB [info] GET /api/items
+[0m[22m10:37:47.665 request_id=FtEsIvfHrTKA8ewAAAAB [info] Sent 500 in 559µs
+[0m[31m10:37:47.665 [error] #PID<0.1264.0> running ApiWeb.Endpoint (connection #PID<0.1244.0>, stream id 3) terminated
+Server: localhost:4000 (http)
+Request: GET /api/items?name[]=apples&name[]=adghslkhek
+** (exit) an exception was raised:
+    ** (UndefinedFunctionError) function :httpc.request/1 is undefined (module :httpc is not available)
+        :httpc.request('https://api.rainforestapi.com/request?api_key=AFBDCD874C274C278C921A03297DF445&type=search&amazon_domain=amazon.co.uk&search_term=apples&category_id=amazonfresh')
+        (api 0.1.0) lib/api.ex:6: Api.foods_like/1
+        (api 0.1.0) lib/api.ex:18: Api.single_item/1
+        (elixir 1.14.0-dev) lib/enum.ex:1634: Enum."-map/2-lists^map/1-0-"/2
+        (api 0.1.0) lib/api_web/controllers/api_controller.ex:8: ApiWeb.ApiController.search/2
+        (api 0.1.0) lib/api_web/controllers/api_controller.ex:1: ApiWeb.ApiController.action/2
+        (api 0.1.0) lib/api_web/controllers/api_controller.ex:1: ApiWeb.ApiController.phoenix_controller_pipeline/2
+        (phoenix 1.5.13) lib/phoenix/router.ex:352: Phoenix.Router.__call__/2
+[0m[22m10:38:04.979 request_id=FtEsJv_RHeTiMugAAAAh [info] GET /api/items
+[0m[22m10:38:04.979 request_id=FtEsJv_RHeTiMugAAAAh [info] Sent 500 in 372µs
+[0m[31m10:38:04.979 [error] #PID<0.1265.0> running ApiWeb.Endpoint (connection #PID<0.1244.0>, stream id 4) terminated
+Server: localhost:4000 (http)
+Request: GET /api/items?name[]=apples&name[]=adghslkhek
+** (exit) an exception was raised:
+    ** (UndefinedFunctionError) function :httpc.request/1 is undefined (module :httpc is not available)
+        :httpc.request('https://api.rainforestapi.com/request?api_key=AFBDCD874C274C278C921A03297DF445&type=search&amazon_domain=amazon.co.uk&search_term=apples&category_id=amazonfresh')
+        (api 0.1.0) lib/api.ex:6: Api.foods_like/1
+        (api 0.1.0) lib/api.ex:18: Api.single_item/1
+        (elixir 1.14.0-dev) lib/enum.ex:1634: Enum."-map/2-lists^map/1-0-"/2
+        (api 0.1.0) lib/api_web/controllers/api_controller.ex:8: ApiWeb.ApiController.search/2
+        (api 0.1.0) lib/api_web/controllers/api_controller.ex:1: ApiWeb.ApiController.action/2
+        (api 0.1.0) lib/api_web/controllers/api_controller.ex:1: ApiWeb.ApiController.phoenix_controller_pipeline/2
+        (phoenix 1.5.13) lib/phoenix/router.ex:352: Phoenix.Router.__call__/2
+[0m[22m10:38:48.084 [notice] SIGTERM received - shutting down
+
+[0m[22m10:38:51.205 [notice] SIGTERM received - shutting down
+
+[0m
