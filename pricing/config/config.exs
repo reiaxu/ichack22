@@ -11,7 +11,7 @@ use Mix.Config
 config :api, ApiWeb.Endpoint,
   server: true,
   headless: true,
-  url: [host: "localhost"],
+  url: [host: "146.169.190.40"],
   secret_key_base: "vQB0G9qVV3FWBe4aDaSnKzYa6HxO+FcddeHFC7d1GJJuO6koYU2SMgvk+BN4rF13",
   render_errors: [view: ApiWeb.ErrorView, accepts: ~w(json), layout: false],
   pubsub_server: Api.PubSub,
