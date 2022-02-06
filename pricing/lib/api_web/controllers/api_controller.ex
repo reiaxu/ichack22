@@ -6,7 +6,7 @@ defmodule ApiWeb.ApiController do
   def search(conn, _params=%{"name" => names}) do
     results = names
     |> Enum.map(&Api.single_item/1)
-    |> Enum.reduce(&Map.merge/2)
+    |> Enum.sum
     json(conn, results)
   end
   def search(conn, _) do
