@@ -7,6 +7,7 @@ import backendFunctions as bf
 from http import HTTPStatus
 import recipes.recipes as rcp
 from flask_cors import CORS, cross_origin
+import json
 
 app = Flask(__name__)
 cors = CORS(app)
@@ -120,14 +121,20 @@ def promptSummaries():
     restrictions = ", ".join(user_restrictions) 
     recipeSummaries = rcp.query_recipes(cuisines, diet, restrictions)
 
+    # save recipies by id
+    
+
     d = {"recipes": recipeSummaries}
-    resp = json.dumps(d)
+    resp = json.dumps(d, indent = 4, sort_keys = True)
+        
 
     return Response(
         response=resp,
         status=HTTPStatus.OK,
         mimetype="application/json",
     )
+
+
 
 # get the price data for a specific grocery list
 @app.route("/price", methods=["GET"])
@@ -190,7 +197,10 @@ def saveNutrition():
     excesses = bf.get_excesses(weekly_nutrition)
 '''
 
-
 if __name__ == "__main__":  # Run flask app in debug mode from terminal
     app.run(host="0.0.0.0", port=5001, debug=True)
+
+
+    
+
 
