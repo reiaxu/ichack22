@@ -1,0 +1,355 @@
+[
+    {
+        "grocery list": [
+            "bread",
+            "tomato",
+            "red onion",
+            "cucumber",
+            "fresh basil",
+            "distilled white vinegar",
+            "extra virgin olive oil",
+            "salt",
+            "black pepper"
+        ],
+        "image": "https://spoonacular.com/recipeImages/649147-312x231.jpg",
+        "ingredients": [
+            "400 g 2-day-old Tuscan-style bread",
+            "4 tomatoes, diced",
+            "2 red onions or 4 spring onions, sliced thinly",
+            "1 cucumber, finely sliced",
+            "10 basil leaves, ripped in half",
+            "2 Tbs red vinegar",
+            "100 ml extra virgin olive oil",
+            "2 pinches of salt",
+            "2 pinches of pepper"
+        ],
+        "method": {
+            "equipment": [],
+            "ingredients": [
+                {
+                    "id": 2044,
+                    "image": "fresh-basil.jpg",
+                    "localizedName": "fresh basil",
+                    "name": "fresh basil"
+                }
+            ],
+            "number": 4,
+            "step": "Serve, garnishing with basil leaves."
+        },
+        "no.": 1,
+        "servings": 6,
+        "sp_id": 649147,
+        "time required": 45,
+        "title": "La Panzanella"
+    },
+    {
+        "grocery list": [
+            "fresh corn kernels",
+            "jalapeno pepper",
+            "red onion",
+            "cilantro",
+            "lime juice",
+            "salt and pepper"
+        ],
+        "image": "https://spoonacular.com/recipeImages/649147-312x231.jpg",
+        "ingredients": [
+            "2 cups fresh corn kernels (or frozen, thawed)",
+            "1 jalapeno, seeded and finely chopped",
+            "1/3 cup chopped red onion",
+            "1/3 cup chopped fresh cilantro",
+            "2 tablespoons freshly squeezed lime juice",
+            "Salt and pepper, to taste"
+        ],
+        "method": {
+            "equipment": [
+                {
+                    "id": 404783,
+                    "image": "bowl.jpg",
+                    "localizedName": "bowl",
+                    "name": "bowl"
+                }
+            ],
+            "ingredients": [
+                {
+                    "id": 1102047,
+                    "image": "salt-and-pepper.jpg",
+                    "localizedName": "salt and pepper",
+                    "name": "salt and pepper"
+                },
+                {
+                    "id": 9160,
+                    "image": "lime-juice.png",
+                    "localizedName": "lime juice",
+                    "name": "lime juice"
+                },
+                {
+                    "id": 10011282,
+                    "image": "red-onion.png",
+                    "localizedName": "red onion",
+                    "name": "red onion"
+                },
+                {
+                    "id": 11165,
+                    "image": "cilantro.png",
+                    "localizedName": "cilantro",
+                    "name": "cilantro"
+                },
+                {
+                    "id": 11979,
+                    "image": "jalapeno-pepper.png",
+                    "localizedName": "jalapeno pepper",
+                    "name": "jalapeno pepper"
+                },
+                {
+                    "id": 11168,
+                    "image": "corn.png",
+                    "localizedName": "corn",
+                    "name": "corn"
+                }
+            ],
+            "number": 1,
+            "step": "In a medium bowl, stir together corn, jalapeno, red onion, cilantro and lime juice.  Season with salt and pepper, to taste.  Refrigerate until serving."
+        },
+        "no.": 2,
+        "servings": 6,
+        "sp_id": 649147,
+        "time required": 45,
+        "title": "La Panzanella"
+    },
+    {
+        "grocery list": [
+            "bay leaves",
+            "black pepper",
+            "celery seed",
+            "extra virgin olive oil",
+            "garlic",
+            "kale",
+            "oregano",
+            "parmesan",
+            "salt",
+            "tomato",
+            "white kidney beans",
+            "white onion",
+            "white potato",
+            "ziti",
+            "zucchini"
+        ],
+        "image": "https://spoonacular.com/recipeImages/649147-312x231.jpg",
+        "ingredients": [
+            "Add 1 teaspoon crushed Bay Leaf",
+            "1 tablespoon Black Pepper",
+            "1 teaspoon Celery Seed",
+            "5 Tablespoons of extra Virgin Olive Oil",
+            "2 tablespoons crushed Garlic",
+            "1 1/2 cup of Kale",
+            "1 teaspoon Oregano",
+            "Parmesan Grated Cheese",
+            "Salt to taste",
+            "4 Italian fresh tomato pealed and chopped",
+            "1 cup of Dried White Kidney Beans",
+            "1 White Onion",
+            "2 cut White Potatoes",
+            "1 cup of Ziti Pasta",
+            "1 Zucchini Squash"
+        ],
+        "method": {
+            "equipment": [
+                {
+                    "id": 404783,
+                    "image": "bowl.jpg",
+                    "localizedName": "bowl",
+                    "name": "bowl"
+                }
+            ],
+            "ingredients": [
+                {
+                    "id": 1033,
+                    "image": "parmesan.jpg",
+                    "localizedName": "parmesan",
+                    "name": "parmesan"
+                },
+                {
+                    "id": 11477,
+                    "image": "zucchini.jpg",
+                    "localizedName": "zucchini",
+                    "name": "zucchini"
+                },
+                {
+                    "id": 10111362,
+                    "image": "potatoes-yukon-gold.png",
+                    "localizedName": "white potato",
+                    "name": "white potato"
+                },
+                {
+                    "id": 2027,
+                    "image": "oregano.jpg",
+                    "localizedName": "oregano",
+                    "name": "oregano"
+                },
+                {
+                    "id": 11215,
+                    "image": "garlic.png",
+                    "localizedName": "garlic",
+                    "name": "garlic"
+                },
+                {
+                    "id": 11233,
+                    "image": "kale.jpg",
+                    "localizedName": "kale",
+                    "name": "kale"
+                },
+                {
+                    "id": 2047,
+                    "image": "salt.jpg",
+                    "localizedName": "salt",
+                    "name": "salt"
+                },
+                {
+                    "id": 11520420,
+                    "image": "ziti.jpg",
+                    "localizedName": "ziti",
+                    "name": "ziti"
+                }
+            ],
+            "length": {
+                "number": 20,
+                "unit": "minutes"
+            },
+            "number": 8,
+            "step": "Add the cut White Potato , oregano, and garlic.cook for 20 minutes and add the zucchini squash, 1 cup of Ziti, kale, and salt to taste pour in bowl and add Parmesan Cheese."
+        },
+        "no.": 3,
+        "servings": 6,
+        "sp_id": 649147,
+        "time required": 45,
+        "title": "La Panzanella"
+    },
+    {
+        "grocery list": [
+            "round tip steak",
+            "taco seasoning mix",
+            "onion",
+            "jalapeno pepper",
+            "garlic",
+            "distilled white vinegar",
+            "black beans",
+            "flour tortilla",
+            "monterey jack cheese",
+            "tomato",
+            "black olives",
+            "sour cream"
+        ],
+        "image": "https://spoonacular.com/recipeImages/649147-312x231.jpg",
+        "ingredients": [
+            "2 pounds London broil",
+            "1 package taco seasoning mix",
+            "1 cup chopped onion",
+            "2 jalapeno peppers, seeded and chopped",
+            "1 clove garlic, minced",
+            "1 Tbs. white vinegar",
+            "1 can fat free refried beans or black beans",
+            "1 package 8-inch flour tortillas",
+            "2 cups shredded Monterey Jack cheese",
+            "1 Chopped tomato",
+            "1 small can sliced black olives",
+            "Sour cream, salsa, green onions, etc."
+        ],
+        "method": {
+            "equipment": [],
+            "ingredients": [
+                {
+                    "id": 16202,
+                    "image": "refried-beans.png",
+                    "localizedName": "refried beans",
+                    "name": "refried beans"
+                },
+                {
+                    "id": 16015,
+                    "image": "black-beans.jpg",
+                    "localizedName": "black beans",
+                    "name": "black beans"
+                },
+                {
+                    "id": 11177,
+                    "image": "corn.png",
+                    "localizedName": "canned corn",
+                    "name": "canned corn"
+                },
+                {
+                    "id": 11215,
+                    "image": "garlic.png",
+                    "localizedName": "garlic",
+                    "name": "garlic"
+                },
+                {
+                    "id": 6164,
+                    "image": "salsa.png",
+                    "localizedName": "salsa",
+                    "name": "salsa"
+                }
+            ],
+            "number": 6,
+            "step": "I like to dress up refried beans with extra garlic and salsa, or some drained canned corn and extra salsa for the black beans."
+        },
+        "no.": 4,
+        "servings": 6,
+        "sp_id": 649147,
+        "time required": 45,
+        "title": "La Panzanella"
+    },
+    {
+        "grocery list": [
+            "ground chuck",
+            "italian sausage",
+            "breadcrumbs",
+            "garlic",
+            "egg",
+            "parsley",
+            "parmesan",
+            "salt",
+            "black pepper"
+        ],
+        "image": "https://spoonacular.com/recipeImages/649147-312x231.jpg",
+        "ingredients": [
+            "1/2 pound ground beef",
+            "1/2 pound italian sausage",
+            "1/2 cup plain bread crumbs KETO \u2013 use panko or almond flour",
+            "1 tsp minced garlic",
+            "2 eggs",
+            "2 tsp finely chopped flat leaf parsley",
+            "1/2 cup grated Parmigiano-Reggiano",
+            "1 tsp salt",
+            "1 tsp fresh ground pepper"
+        ],
+        "method": {
+            "equipment": [],
+            "ingredients": [
+                {
+                    "id": 93740,
+                    "image": "almond-meal-or-almond-flour.jpg",
+                    "localizedName": "almond flour",
+                    "name": "almond flour"
+                },
+                {
+                    "id": 18079,
+                    "image": "breadcrumbs.jpg",
+                    "localizedName": "breadcrumbs",
+                    "name": "breadcrumbs"
+                },
+                {
+                    "id": 10018079,
+                    "image": "panko.jpg",
+                    "localizedName": "panko",
+                    "name": "panko"
+                }
+            ],
+            "number": 6,
+            "step": "TIP: Replace the breadcrumbs with Panko or Almond Flour to make this recipe KETO friendly.\u00a0"
+        },
+        "no.": 5,
+        "servings": 6,
+        "sp_id": 649147,
+        "time required": 45,
+        "title": "La Panzanella"
+    }
+]
