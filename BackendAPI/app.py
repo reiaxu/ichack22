@@ -1,7 +1,7 @@
 from importlib.metadata import metadata
 from flask import Flask, session, Response
 from flask_restful import reqparse
-import requests, ast
+import requests, ast, json
 from flask_sqlalchemy import SQLAlchemy
 import backendFunctions as bf
 from http import HTTPStatus
@@ -80,22 +80,20 @@ def passOnMetadata():
     AadiURL = "http://172.31.26.187:5000"
     tags = requests.get(url=AadiURL, params={"lat":lat,"lng":lng})
 
-    cuisineDict = session.get("cuisine_dict", {})
-
-    for cuisine in tags:
-        count = cuisineDict.get(cuisine, 0)
-        cuisineDict[str(cuisine)] = count+1
-
+    cuisineDict = session.get("cuisine_dict", dict())
+    c = json.loads(tags.text.replace("'", "\""))["cuisine"]
+    cuisineDict[str(c)] = cuisineDict.get(str(c), 0) + 1
     session["cuisine_dict"] = cuisineDict
-
-    return Response(status=HTTPStatus.OK, mimetype="application/json")
+    return Response(status=HTTPStatus.OK)
 
 # test roulette
 @app.route("/tags", methods=["GET"])
 def playRoulette():
-    cuisineDict = session.get("cuisine_dict", {})
+    cuisineDict = session.get("cuisine_dict", dict())
     result = bf.cuisineRoulette(cuisineDict, 2)
-    resp = ast.literal_eval(result.decode('utf-8'))
+    # resp = ast.literal_eval((str(result))[2:-1])
+    # resp = re.sub('(b")|(")|(\\)', "", result)
+    resp = str((result))
     return Response(resp, status=HTTPStatus.OK, mimetype="application/json")
 
 
@@ -103,10 +101,19 @@ def playRoulette():
 @app.route("/summaries", methods=["GET"])
 def promptSummaries():
     user_restrictions = session.get("restrictions", "")
-    user_diets = session.get("diets", "")
-    cuisineDict = session.get("cuisine_dict", {})
+    user_diets = session.get("diets", list())
+    cuisineDict = session.get("cuisine_dict", dict())
     user_cuisines = bf.cuisineRoulette(cuisineDict, 3)
-
+    spoon_url = "http://172.31.26.187:5002"
+    spoon_params = '{"user_restrictions": {}, "user_diets": {}, "user_cuisines": {}}'.format(
+        user_restrictions, user_diets, user_cuisines
+    )
+    recipeSummaries = requests.get(spoon_url, params=spoon_params)
+    return Response(
+        response=str(recipeSummaries),
+        status=HTTPStatus.OK,
+        mimetype="application/json",
+    )
     # request from Reia with these paramaters
 
 # get the JSON for a specific recipe, by Id, along with specific prices
@@ -114,12 +121,20 @@ def promptSummaries():
 def promptRecipe():
     args = parser.parse_args()
     recipe_id = args["id"]
-
+    spoon_url = "http://172.31.26.187:5002"
+    spoon_params = '{"id": {}}'.format(recipe_id)
+    recipe = requests.get(spoon_url, params=spoon_params)
+    return Response(
+        response=str(recipe),
+        status=HTTPStatus.OK,
+        mimetype="application/json"
+    )
     # request from Reia with that Id
 
     # send shopping list to Timothy
 
 # receive feedback on a specific recipe
+'''
 @app.route("/feedback", methods=["PUT"])
 def saveFeedback():
     args = parser.parse_args()
@@ -132,6 +147,7 @@ def saveFeedback():
     else:
         badlist = session.get("bad", []) 
         badlist = badlist.append(recipe_id)
+'''
 
 # save nutritional content
 '''

@@ -1,30 +1,19 @@
-
 from random import randrange
 
 
 def cuisineRoulette(cuisineDict, n) -> list:
+    sortedCuisineDict = dict(sorted(cuisineDict.items(), key=lambda item: item[1]))
+    sortedCuisineList = list(sortedCuisineDict.items())
     if len(cuisineDict) < n :
-        return cuisineDict.keys()
+        print("Sorted List", sortedCuisineList)
+        return sortedCuisineList
     else:
-
-        keys = list(cuisineDict.keys())
-        freqs = list(cuisineDict.values())
-        freq_sum = sum(freqs)
-
-        selected_keys = []
-
+        selected_keys = list()
         for i in range(n):
-            roulette = randrange(freq_sum)
-            ctr = -1
-            cumsum = 0
-            while cumsum < roulette:
-                ctr += 1
-                cumsum += freqs[ctr]
-                
-            selected_keys.append(keys[ctr-1])   # God has forsaken us
-
-        # temp impl
+            selected_keys.append(sortedCuisineList[i][0])
+        print("Selected Keys:", selected_keys)
         return selected_keys
+
 
 def returnRecipes():
     return [
