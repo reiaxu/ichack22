@@ -1,9 +1,10 @@
 from importlib.metadata import metadata
-from flask import Flask, session
+from flask import Flask, session, Response
 from flask_restful import reqparse
 import requests
 from flask_sqlalchemy import SQLAlchemy
 import backendFunctions as bf
+from http import HTTPStatus
 
 app = Flask(__name__)
 
@@ -82,7 +83,7 @@ def passOnMetadata():
 
     session["cuisine_dict"] = cuisineDict
 
-    return {"ok": tags } , 201
+    return Response(status=HTTPStatus.OK, mimetype="application/json")
 
 # test roulette
 @app.route("/tags", methods=["GET"])
