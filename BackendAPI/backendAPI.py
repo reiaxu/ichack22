@@ -16,6 +16,7 @@ parser = reqparse.RequestParser()
 parser.add_argument("title")
 parser.add_argument("restrictions", action="append")
 parser.add_argument("diets", action="append")
+parser.add_argument("tags", action="append")
 
 # wipe session
 @app.route("/", methods=["DELETE"])
@@ -79,11 +80,15 @@ def updateCuisines():
     args = parser.parse_args()
     tags = args["tags"]
 
+    cuisineDict = session.get("cuisine_dict", {})
+
     for cuisine in tags:
         count = cuisineDict.get(cuisine, 0)
         cuisineDict[cuisine] = count+1 
 
-    return "ok", 201
+    session["cuisine_dict"] = cuisineDict
+
+    return {"ok": session["cuisine_dict"] } , 201
 
 # get a JSON array of recipe summaries to suggest
 @app.route("/summaries", methods=["GET"])
