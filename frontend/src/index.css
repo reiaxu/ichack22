@@ -1,0 +1,15 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.btn {
+  @apply shadow-md py-3 px-6 rounded-md transition duration-300
+}
+
+.btn-emerald {
+  @apply bg-emerald-500 text-white hover:bg-emerald-700
+}
+
+.btn-white {
+  @apply bg-gray-200 hover:bg-gray-400
+}
