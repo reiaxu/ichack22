@@ -16,10 +16,11 @@ defmodule Api do
   end
   def single_item(name) do
     case Api.foods_like(name) do
-      [] -> %{name => "Not Found"}
+      [] -> 0#%{name => "Not Found"}
       items ->
-        hd = Enum.sort_by(items, &(&1.price.amount)) |> hd
-        %{name => hd}
+        #hd = Enum.sort_by(items, &(&1.price.amount)) |> hd
+        hd(items).price.amount
+        #%{name => hd}
     end
   end
 end
