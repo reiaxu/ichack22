@@ -7,7 +7,9 @@ function RecipeTile(props){
     }
 
     return(
-        <div className="w-full h-full flex flex-col justify-center align-center hover:cursor-pointer shadow-xl rounded-lg p-6 border-gray-100 border mb-4">
+        <div className="w-full h-full flex flex-col justify-center align-center hover:cursor-pointer shadow-xl rounded-lg p-6 border-gray-100 border mb-4"
+            onClick={() => {window.location = '/recipe?id=' + props.id}}
+        >
             <div className="px-4 py-4 max-h-13">
                 <img className="h-[100%] w-[100%]" src={props.src}/>
             </div>
