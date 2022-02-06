@@ -1,7 +1,7 @@
 from importlib.metadata import metadata
 from flask import Flask, session
 from flask_restful import reqparse
-import json
+import requests
 from flask_sqlalchemy import SQLAlchemy
 import backendFunctions as bf
 
@@ -63,20 +63,15 @@ def showDiets():
     return {"diets": session.get("diets", [])}
 
 # receive picture metadata and pass to Aadi
-@app.route("/meta", methods=["POST"])
+@app.route("/meta", methods=["PUT"])
 def passOnMetadata():
     args = parser.parse_args()
-    meta = args["idk"]
+    lat = args["lat"]
+    lng = args["lng"]
+    # meta will probably have to be split and spliced into url
 
-    # pass this shit to Aadi
-
-    return "ok", 201
-
-# receive a list of tags from Aadi and updates dict
-@app.route("/tags", methods=["POST"])
-def updateCuisines():
-    args = parser.parse_args()
-    tags = args["tags"]
+    AadiURL = ""
+    tags = requests.get(url=AadiURL, params={lat,lng})
 
     cuisineDict = session.get("cuisine_dict", {})
 
@@ -86,7 +81,7 @@ def updateCuisines():
 
     session["cuisine_dict"] = cuisineDict
 
-    return {"ok": session["cuisine_dict"] } , 201
+    return {"ok": tags } , 201
 
 # test roulette
 @app.route("/tags", methods=["GET"])
