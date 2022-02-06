@@ -13,8 +13,7 @@ RUN mix local.hex --force
 RUN mix archive.install hex phx_new
 RUN mix local.rebar --force
 RUN mix deps.get
-ENV SECRET_KEY_BASE=${mix phx.gen.secret}
+ENV SECRET_KEY_BASE=0
 ENV MIX_ENV=prod
-RUN mix compile
-RUN mix release --force
-RUN _build/dev/rel/api/bin/api daemon
+RUN mix release
+RUN _build/prod/rel/api/bin/api daemon
