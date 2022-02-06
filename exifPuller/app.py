@@ -1,41 +1,48 @@
-from flask import Flask, render_template, request
-import re, requests, json
+from http import HTTPStatus
+from flask import Flask, Response, request
+import re, requests
 
 app = Flask(__name__)
-db_url = "http://ourcustomapi.com/api"  # TODO: api address and key maybe?
 lat_regex = "^(\+|-)?(?:90(?:(?:\.0{1,6})?)|(?:[0-9]|[1-8][0-9])(?:(?:\.[0-9]{1,6})?))$"
 long_regex = "^(\+|-)?(?:180(?:(?:\.0{1,6})?)|(?:[0-9]|[1-9][0-9]|1[0-7][0-9])(?:(?:\.[0-9]{1,6})?))$"
 
 
-# Homepage
-@app.route("/", methods=["GET"])
-def landingPage():
-    return render_template("index.html")
-
-
 # callable endpoint to push exifdata along with user id to database
-@app.route("/pushexifdata", methods=["POST"])
+@app.route("/")
 def pushExifData():
-    dataUser = request.form["User"]
-    dataLat = request.form["Lat"]
-    dataLong = request.form["Long"]
-    if validLatLong(dataLat, dataLong):
-        restaurant = getNode(float(dataLat), float(dataLong))
-        if restaurant == None:
-            return "Server is likely overloaded. Please try again later."
-        cuisine = getCuisine(restaurant)
-        # dbpush = requests.post(db_url, params={"user": dataUser, "cuisine": cuisine})
-        return "Congrats, {}\nImage location data processed, restaurant: {}, cuisine: {}".format(
-            dataUser, restaurant["tags"]["name"], cuisine
+    args = request.args.to_dict()
+    try:
+        dataLat = args["lat"]
+        dataLong = args["lng"]
+        if not validLatLong(dataLat, dataLong):
+            return Response(
+                response="Invalid Latitude or Longitude Value",
+                status=HTTPStatus.BAD_REQUEST,
+                mimetype="text/plain",
+            )
+        else:
+            restaurant = getNode(float(dataLat), float(dataLong))
+            if restaurant == None:
+                return Response(
+                    response="OpenStreetMap likely overloaded, please try again later.",
+                    status=HTTPStatus.SERVICE_UNAVAILABLE,
+                    mimetype="text/plain",
+                )
+            cuisine = getCuisine(restaurant)
+            responseContent = {"name": restaurant["tags"]["name"], "cuisine": cuisine}
+            resp = Response(
+                response=str(responseContent),
+                status=HTTPStatus.OK,
+                mimetype="application/json",
+            )
+            return resp
+    except Exception as e:
+        responseContent = str(e)
+        return Response(
+            response=responseContent,
+            status=HTTPStatus.INTERNAL_SERVER_ERROR,
+            mimetype="text/plain",
         )
-    else:
-        return "Error: Invalid Latitude or Longitude"
-
-
-# endpoint to show manual entry form
-@app.route("/manual", methods=["GET"])
-def manualEntry():
-    return render_template("manual.html")
 
 
 def validLatLong(lat, long) -> bool:
@@ -50,6 +57,7 @@ def validLatLong(lat, long) -> bool:
 
 def getNode(lat, long, radius=0.0001):
     """Get node object from OpenStreetMap, recursively increasing search radius."""
+    print("Search Radius:", radius)
     overpass_url = "http://overpass-api.de/api/interpreter"
     overpass_location = "{},{},{},{}".format(
         lat - radius, long - radius, lat + radius, long + radius
