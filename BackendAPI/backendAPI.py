@@ -138,7 +138,6 @@ def saveNutrition():
 '''
 
 
-if __name__ == "__main__":
-    app.run()
-
+if __name__ == "__main__":  # Run flask app in debug mode from terminal
+    app.run(host="0.0.0.0", debug=True)
 
