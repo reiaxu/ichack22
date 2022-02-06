@@ -8,12 +8,18 @@ defmodule Api do
     )
     {:ok, json} = Jason.decode(req, keys: :atoms)
     results = json.search_results
-    for item <- results, Regex.split(~r/[^a-zA-Z0-9]+/, item.title) |> Enum.map(&String.downcase/1) |> Enum.member?(name), do: %{title: item.title, price: %{currency: item.price.currency, amount: item.price.value}}
+    :io.fwrite("~p~n", [results])
+    case for item <- results, Regex.split(~r/[^a-zA-Z0-9]+/, item.title) |> Enum.map(&String.downcase/1) |> Enum.member?(name), do: %{title: item.title, price: %{currency: item.price.currency, amount: item.price.value}} do
+      [] -> for item <- results, do: %{title: item.title, price: %{currency: item.price.currency, amount: item.price.value}}
+      items -> items
+    end
   end
   def single_item(name) do
     case Api.foods_like(name) do
-      [hd|_] -> %{name => hd}
       [] -> %{name => "Not Found"}
+      items ->
+        hd = Enum.sort_by(items, &(&1.price.amount)) |> hd
+        %{name => hd}
     end
   end
 end
