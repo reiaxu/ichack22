@@ -72,7 +72,7 @@ def updateDiets():
 
 # return diets
 @app.route("/diet", methods=["GET"])
-def showDiets():
+def show_diets():
     diets = session.get("diets", [])
     resp = '{"diets": {}}'.format(diets)
     return Response(resp, status=HTTPStatus.OK, mimetype="application/json")
@@ -98,7 +98,7 @@ def passOnMetadata():
 
 # test roulette
 @app.route("/tags", methods=["GET"])
-def playRoulette():
+def play_roulette():
     cuisineDict = session.get("cuisine_dict", dict())
     result = bf.cuisineRoulette(cuisineDict, 2)
     resp = str((result))
@@ -107,7 +107,7 @@ def playRoulette():
 
 # get a JSON array of recipe summaries to suggest, along with prices
 @app.route("/summaries", methods=["GET"])
-def promptSummaries():
+def prompt_summaries():
     user_restrictions = session.get("restrictions", "")
     user_diets = session.get("diets", list())
     cuisineDict = session.get("cuisine_dict", dict())
@@ -122,7 +122,10 @@ def promptSummaries():
     recipeSummaries = rcp.query_recipes(cuisines, diet, restrictions)
 
     # save recipies by id
-    
+    recipeDict = dict()
+    for recipe in recipeSummaries:
+        recipeDict[recipe["sp_id"]] = recipe
+    session["recipeDict"] = recipeDict
 
     d = {"recipes": recipeSummaries}
     resp = json.dumps(d, indent = 4, sort_keys = True)
@@ -134,11 +137,26 @@ def promptSummaries():
         mimetype="application/json",
     )
 
+# access saved recipes by ID
+@app.route("/recipes", methods=["GET"])
+def access_recipe_dict():
+    args = parser.parse_args()
+    recipeID = args["sp_id"]
+    recipe_dict = session.get("recipeDict", dict())
+    recipe_wanted = recipe_dict[recipeID]
 
+    d = {"recipe": recipe_wanted}
+    resp = json.dumps(d, indent = 4, sort_keys = True)
+
+    return Response(
+        response=resp,
+        status=HTTPStatus.OK,
+        mimetype="application/json",
+    )
 
 # get the price data for a specific grocery list
 @app.route("/price", methods=["GET"])
-def promptRecipe():
+def prompt_recipe():
     args = parser.parse_args()
     grocery_list = args["grocery list"]
 
