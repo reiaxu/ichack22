@@ -87,9 +87,7 @@ def passOnMetadata():
 
     #AadiURL = "http://172.31.26.187:5000"
     AadiURL = "https://exif.ichack.8bitsqu.id"
-    print("pre----")
     tags = requests.get(url=AadiURL, params={"lat":lat,"lng":lng})
-    print("post---")
 
     cuisineDict = session.get("cuisine_dict", dict())
     c = json.loads(tags.text.replace("'", "\""))["cuisine"]
@@ -102,8 +100,6 @@ def passOnMetadata():
 def playRoulette():
     cuisineDict = session.get("cuisine_dict", dict())
     result = bf.cuisineRoulette(cuisineDict, 2)
-    # resp = ast.literal_eval((str(result))[2:-1])
-    # resp = re.sub('(b")|(")|(\\)', "", result)
     resp = str((result))
     return Response(resp, status=HTTPStatus.OK, mimetype="application/json")
 
@@ -115,7 +111,6 @@ def promptSummaries():
     user_diets = session.get("diets", list())
     cuisineDict = session.get("cuisine_dict", dict())
     user_cuisines = bf.cuisineRoulette(cuisineDict, 3)
-    spoon_url = "http://172.31.26.187:5002"
 
     cuisines = ", ".join(user_cuisines)
     if len(user_diets) > 0:
@@ -141,8 +136,11 @@ def promptRecipe():
     grocery_list = args["grocery list"]
 
     grocery_url = "http://146.169.190.40:4000"
+    print("1")
     glist = json.dumps({"name": grocery_list})
-    total = requests.get(url=grocery_url, params={glist})
+    print("2")
+    total = requests.get(url=grocery_url, params=glist)
+    print("3")
 
     d = {"total": total}
     resp = json.dumps(d)
@@ -152,12 +150,8 @@ def promptRecipe():
         status=HTTPStatus.OK,
         mimetype="application/json"
     )
-    # request from Reia with that Id
-
-    # send shopping list to Timothy
 
 # receive feedback on a specific recipe
-'''
 @app.route("/feedback", methods=["PUT"])
 def saveFeedback():
     args = parser.parse_args()
@@ -170,7 +164,19 @@ def saveFeedback():
     else:
         badlist = session.get("bad", []) 
         badlist = badlist.append(recipe_id)
-'''
+
+# retrieve liked recipes
+@app.route("/feedback", methods=["GET"])
+def retrieveGood():
+    good_recipes = session.get("good", list())
+
+    resp = json.dumps({"good":good_recipes})
+
+    return Response(
+        response=resp,
+        status=HTTPStatus.OK,
+        mimetype="application/json"
+    )
 
 # save nutritional content
 '''
