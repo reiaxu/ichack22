@@ -7,8 +7,8 @@ def cuisineRoulette(cuisineDict, n):
         return cuisineDict.keys()
     else:
 
-        keys = cuisineDict.keys()
-        freqs = cuisineDict.items()
+        keys = list(cuisineDict.keys())
+        freqs = list(cuisineDict.values())
         freq_sum = sum(freqs)
 
         selected_keys = []

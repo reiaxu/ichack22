@@ -5,8 +5,6 @@ import json
 from flask_sqlalchemy import SQLAlchemy
 import backendFunctions as bf
 
-cuisineDict = {}    # probably want to put in session 
-
 app = Flask(__name__)
 
 #key from Flask documentation, not secret
@@ -90,10 +88,20 @@ def updateCuisines():
 
     return {"ok": session["cuisine_dict"] } , 201
 
+# test roulette
+@app.route("/tags", methods=["GET"])
+def playRoulette():
+    cuisineDict = session.get("cuisine_dict", {})
+    result = bf.cuisineRoulette(cuisineDict, 2)
+    
+    return {"cuisines": result}
+
+
 # get a JSON array of recipe summaries to suggest
 @app.route("/summaries", methods=["GET"])
 def promptSummaries():
     user_restrictions = session.get("restrictions", "")
+    cuisineDict = session.get("cuisine_dict", {})
     user_cuisines = bf.cuisineRoulette(cuisineDict, 3)
 
     # request from Reia with these paramaters
