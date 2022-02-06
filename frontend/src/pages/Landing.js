@@ -5,8 +5,10 @@ function Landing(){
     return(
         <>
         <header>
-            <nav className="container font-Loto flex items-center px-11 py-4 mt-4 sm:mt-12">
-                <div className="py-1">Logo</div>
+            <nav className="container font-Loto flex items-center px-11 py-4 mt-4 sm:mt-4">
+                <div className="py-1">
+                    <img className="w-[180px] h-[80px]" src="/logo.jpg" />
+                </div>
                 <ul className="hidden sm:flex flex-1 item justify-end items-center gap-12 text-emerald-400 uppercase text-xs">
                     <li className="cursor-pointer">Features</li>
                     <li className="cursor-pointer">Purchase</li>
@@ -97,18 +99,16 @@ function Landing(){
 
         <footer className="bg-emerald-900 py-8">
             <div className="container flex flex-col md:flex-row items-center">
-                <div className="flex flex-1 flex-wrap items-center justify-center md:justify-start gap-12">
-                    <div className="py-1">Logo</div>
+                <div className="flex flex-1 flex-wrap items-center justify-center md:justify-start gap-12 text-white">
+                    <div className="py-1">Educate</div>
                     <ul className="flex text-white uppercase gap-12 text-xs">
                         <li className="cursor-pointer">Features</li>
                         <li className="cursor-pointer">Purchase</li>
                         <li className="cursor-pointer"></li>
                     </ul>
                 </div>
-                <div class="flex gap-10 mt-12 md:mt-0">
-                    <li>Icon</li>
-                    <li>Icon</li>
-                </div>
+                
+                
             </div>
         </footer>
         </>
