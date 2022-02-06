@@ -1,3 +1,11 @@
+
+def cuisineRoulette(cuisineDict, n):
+    if len(cuisineDict) < n :
+        return cuisineDict.keys()
+    else:
+        # temp impl
+        return cuisineDict.keys()[:n]
+
 def returnRecipes():
     return [
         {
