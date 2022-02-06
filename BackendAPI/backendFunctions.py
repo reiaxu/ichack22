@@ -26,7 +26,6 @@ def cuisineRoulette(cuisineDict, n):
         # temp impl
         return selected_keys
 
-
 def returnRecipes():
     return [
         {

@@ -68,10 +68,9 @@ def passOnMetadata():
     args = parser.parse_args()
     lat = args["lat"]
     lng = args["lng"]
-    # meta will probably have to be split and spliced into url
 
-    AadiURL = ""
-    tags = requests.get(url=AadiURL, params={lat,lng})
+    AadiURL = "!!!"
+    tags = requests.get(url=AadiURL, params={"lat":lat,"lng":lng})
 
     cuisineDict = session.get("cuisine_dict", {})
 
@@ -96,18 +95,48 @@ def playRoulette():
 @app.route("/summaries", methods=["GET"])
 def promptSummaries():
     user_restrictions = session.get("restrictions", "")
+    user_diets = session.get("diets", "")
     cuisineDict = session.get("cuisine_dict", {})
     user_cuisines = bf.cuisineRoulette(cuisineDict, 3)
 
     # request from Reia with these paramaters
 
-# get the JSON for a specific recipe, by Id
+# get the JSON for a specific recipe, by Id, along with specific prices
 @app.route("/recipes", methods=["GET"])
 def promptRecipe():
     args = parser.parse_args()
-    Id = args["id"]
+    recipe_id = args["id"]
 
     # request from Reia with that Id
+
+    # send shopping list to Timothy
+
+# receive feedback on a specific recipe
+@app.route("/feedback", methods=["PUT"])
+def saveFeedback():
+    args = parser.parse_args()
+    feedback = args["feedback"]
+    recipe_id = args["id"]
+
+    if feedback == "good":
+        goodlist = session.get("good", [])
+        goodlist = goodlist.append(recipe_id)
+    else:
+        badlist = session.get("bad", []) 
+        badlist = badlist.append(recipe_id)
+
+# save nutritional content
+'''
+@app.route("/feedback", methods=["POST"])
+def saveNutrition():
+    args = parser.parse_args()
+    nutrition = args["nut"]
+
+    weekly_nutrition = session.get("week_nut", {})
+    deficiencies = bf.get_deficiencies(weekly_nutrition)
+    excesses = bf.get_excesses(weekly_nutrition)
+'''
+
 
 if __name__ == "__main__":
     app.run()
