@@ -69,7 +69,7 @@ def passOnMetadata():
     lat = args["lat"]
     lng = args["lng"]
 
-    AadiURL = "!!!"
+    AadiURL = "http://172.31.26.187:5000"
     tags = requests.get(url=AadiURL, params={"lat":lat,"lng":lng})
 
     cuisineDict = session.get("cuisine_dict", {})
