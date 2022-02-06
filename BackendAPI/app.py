@@ -25,11 +25,14 @@ parser.add_argument("tags", action="append")
 parser.add_argument("lat")
 parser.add_argument("lng")
 parser.add_argument("grocery list", action="append")
+parser.add_argument("sp_id")
+
+recipeDict = dict()
 
 # wipe session
 @app.route("/", methods=["DELETE"])
 def resetRestrictions():
-    session.clear()
+    #session.clear()
     return Response("ok", HTTPStatus.CREATED, mimetype="text/plain")
 
 # receive additional dietary restrictions
@@ -108,6 +111,8 @@ def play_roulette():
 # get a JSON array of recipe summaries to suggest, along with prices
 @app.route("/summaries", methods=["GET"])
 def prompt_summaries():
+    global recipeDict
+
     user_restrictions = session.get("restrictions", "")
     user_diets = session.get("diets", list())
     cuisineDict = session.get("cuisine_dict", dict())
@@ -125,7 +130,8 @@ def prompt_summaries():
     recipeDict = dict()
     for recipe in recipeSummaries:
         recipeDict[recipe["sp_id"]] = recipe
-    session["recipeDict"] = recipeDict
+
+    print(recipeDict)
 
     d = {"recipes": recipeSummaries}
     resp = json.dumps(d, indent = 4, sort_keys = True)
@@ -138,12 +144,16 @@ def prompt_summaries():
     )
 
 # access saved recipes by ID
-@app.route("/recipes", methods=["GET"])
+@app.route("/recipes", methods=["POST"])
 def access_recipe_dict():
+    global recipeDict
+
     args = parser.parse_args()
-    recipeID = args["sp_id"]
-    recipe_dict = session.get("recipeDict", dict())
-    recipe_wanted = recipe_dict[recipeID]
+    recipeID = int(args["sp_id"])
+
+    print(recipeDict)
+
+    recipe_wanted = recipeDict[recipeID]
 
     d = {"recipe": recipe_wanted}
     resp = json.dumps(d, indent = 4, sort_keys = True)
