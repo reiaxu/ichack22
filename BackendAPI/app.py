@@ -15,6 +15,8 @@ parser.add_argument("title")
 parser.add_argument("restrictions", action="append")
 parser.add_argument("diets", action="append")
 parser.add_argument("tags", action="append")
+parser.add_argument("lat")
+parser.add_argument("lng")
 
 # wipe session
 @app.route("/", methods=["DELETE"])
