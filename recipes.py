@@ -14,29 +14,33 @@ cuisines = ", ".join(data["cuisines"])
 diet = data["diet"]
 intolerances = ", ".join(data["intolerances"])
 
-response = api.search_recipes_complex(query = "", cuisine = cuisines, diet = diet, intolerances = intolerances, 
+response = api.search_recipes_complex(query = "healthy", cuisine = cuisines, diet = diet, intolerances = intolerances, 
                                       instructionsRequired = True, fillIngredients = True, addRecipeInformation = True, 
-                                      addNutritionInformation = True, sort = "random", number = 1)
+                                      addNutritionInformation = True, sort = "random", number = 5)
 data = response.json()
 
-instructions = data["results"][0]["analyzedInstructions"][0]["steps"]
-for i in range(len(instructions)):
-    del instructions[i]["ingredients"]
-    del instructions[i]["equipment"]
+five_recipes = []
 
-grocery_list = []
-ingredient_list = []
-ingredients = data["results"][0]["extendedIngredients"]
-for i in range(len(ingredients)):
-    grocery_list.append(ingredients[i]["nameClean"])
-    ingredient_list.append(ingredients[i]["original"])
+for j in range(len(data["results"])):
+    instructions = data["results"][j]["analyzedInstructions"][0]["steps"]
+    for i in range(len(instructions)):
+        del instructions[i]["ingredients"]
+        del instructions[i]["equipment"]
 
-recipe = {"grocery list": grocery_list, "ingredients": ingredient_list, "method": instructions}
+    grocery_list = []
+    ingredient_list = []
+    ingredients = data["results"][j]["extendedIngredients"]
+    for i in range(len(ingredients)):
+        grocery_list.append(ingredients[i]["nameClean"])
+        ingredient_list.append(ingredients[i]["original"])
+
+    image = data["results"][0]["image"]
+
+    recipe = {"no.": j + 1, "image": image, "grocery list": grocery_list, "ingredients": ingredient_list, "method": instructions}
+    five_recipes.append(recipe)
 
 with open('recipe_output.txt', 'w') as json_file:
-  json.dump(recipe, json_file, indent = 4, sort_keys = True)
+  json.dump(five_recipes, json_file, indent = 4, sort_keys = True)
 
 
-# 5 recipes
-# filter by healthscore
 
